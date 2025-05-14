@@ -25,7 +25,7 @@ function Key({scale = 1, position = [0, 0, 0], rotation = [0, 0, 0]}: KeyProps) 
 
     useFrame((_, delta) => {
         if (!isDragging.current && keyRef.current) {
-            keyRef.current.rotation.y += delta * 0.1
+            keyRef.current.rotation.y += delta * 0.2
         }
     })
 
@@ -52,6 +52,7 @@ function Key({scale = 1, position = [0, 0, 0], rotation = [0, 0, 0]}: KeyProps) 
 
         const onTouchStart = (e: TouchEvent) => {
             if (e.touches.length === 1) {
+                e.preventDefault()
                 isDragging.current = true
                 previousPosition.current = {
                     x: e.touches[0].clientX,
@@ -61,6 +62,7 @@ function Key({scale = 1, position = [0, 0, 0], rotation = [0, 0, 0]}: KeyProps) 
         }
         const onTouchMove = (e: TouchEvent) => {
             if (isDragging.current && e.touches.length === 1) {
+                e.preventDefault()
                 handleMove(e.touches[0].clientX, e.touches[0].clientY)
             }
         }
@@ -72,8 +74,8 @@ function Key({scale = 1, position = [0, 0, 0], rotation = [0, 0, 0]}: KeyProps) 
         window.addEventListener('mousemove', onMouseMove)
         window.addEventListener('mouseup', handleEnd)
 
-        canvas.addEventListener('touchstart', onTouchStart)
-        window.addEventListener('touchmove', onTouchMove)
+        canvas.addEventListener('touchstart', onTouchStart, {passive: false})
+        window.addEventListener('touchmove', onTouchMove, {passive: false})
         window.addEventListener('touchend', onTouchEnd)
 
         return () => {
