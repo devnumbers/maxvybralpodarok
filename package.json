@@ -7,12 +7,16 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "homepage": "https://devnumbers.github.io/maxvybralpodarok",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@react-three/drei": "^10.0.7",
     "@react-three/fiber": "^9.1.2",
     "fitty": "^2.4.2",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "save": "^2.9.0",
