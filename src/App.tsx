@@ -106,7 +106,7 @@ export const App = () => {
     useEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth
-            let newScale = 0.4
+            let newScale = 0.5
 
             if (width >= 1200) {
                 newScale = 0.8
