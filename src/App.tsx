@@ -7,7 +7,7 @@ import {Euler, Object3D, Vector3} from 'three'
 import type {GLTF} from 'three-stdlib'
 import './App.css'
 
-useGLTF.preload('/model.glb')
+useGLTF.preload('/maxvybralpodarok/model.glb')
 
 type KeyProps = {
     scale?: number | Vector3
@@ -16,7 +16,7 @@ type KeyProps = {
 }
 
 function Key({scale = 1, position = [0, 0, 0], rotation = [0, 0, 0]}: KeyProps) {
-    const {scene} = useGLTF('/model.glb') as GLTF
+    const {scene} = useGLTF('/maxvybralpodarok/model.glb') as GLTF
     const keyRef = useRef<Object3D>(null)
     const {gl} = useThree()
 
